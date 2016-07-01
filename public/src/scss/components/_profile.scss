@@ -1,0 +1,54 @@
+.profile-card{
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, .09);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+	background: white;
+	margin-bottom: 10px;
+	border-radius: 3px;
+	.thumbnail{
+		border: medium none;
+		border-radius: 3px;
+		padding: 0;
+		img{
+			width: 48px;
+			height: 48px;
+		}
+	}
+}
+.setting-menu{
+	border: 1px solid rgba(0, 0, 0, .09);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+	background: white;
+	border-radius: 3px;
+	a{
+		color: $gray55;
+		&:hover{
+			background: $grayf5;
+		}
+	}
+	.is-active{
+		background: $main;
+		color: white;
+		&:hover{
+			background: $main;
+		}
+	}
+}
+.white-box{
+	padding: 20px 20px 6px;
+	border: 1px solid rgba(0, 0, 0, .09);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+	background: white;
+	border-radius: 3px;
+	margin-bottom: 19px;
+	img{
+		max-width: 80px;
+		margin-bottom: 15px;
+		height: auto;
+		border-radius: 3px;
+	}
+}
+.small-lead{
+	font-size: 18px;
+	font-weight: 300;
+}

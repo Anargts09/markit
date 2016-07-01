@@ -1,0 +1,21 @@
+.socialLogin{
+	a{
+		color: white;
+		background: $gray4d;
+		border: 1px solid $gray1a;
+		transition: all 0.3s;
+		&.twitter{
+			border-color: $twitter-border;
+			background: $twitter;
+		}
+		&:hover{
+			background: $gray33;
+			border-color: black;
+			color: $grayf1;
+			&.twitter{
+				background: $twitter-border;
+				border-color: $twitter-hover;
+			}
+		}
+	}	
+}

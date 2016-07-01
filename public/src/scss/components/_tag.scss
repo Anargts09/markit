@@ -1,0 +1,23 @@
+.tag{
+	margin: 0;
+	&.primary{
+		background: $primary-color;
+		color: white;
+		line-height: 26px;
+		padding: 0 5px;
+		border-radius: 3px;
+		a{
+			text-indent: -99999px;
+			font-weight: bold;
+			color: white;
+			text-decoration:none;
+			font-size: 11px;
+			line-height: 26px;
+		}
+	}
+}
+.not_valid {
+	background: $alert-color !important;
+	color: white !important;
+	border-radius: 3px;
+}

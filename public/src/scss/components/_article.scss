@@ -1,0 +1,19 @@
+.article-box{
+	background: white;
+}
+.article-list{
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, .09);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+	background: white;
+	border-radius: 3px;	
+	margin-bottom: 10px;
+	img{
+		border-radius: 50%;
+		height: 36px;
+		width: auto;
+	}
+	a{
+		color: $gray33;
+	}
+}

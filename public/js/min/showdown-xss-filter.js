@@ -1,0 +1,1 @@
+!function(){"undefined"!=typeof module&&(filterXSS=require("xss"));var e=function(e){return[{type:"output",filter:function(e){return filterXSS(e)}}]};"undefined"!=typeof window&&window.showdown&&window.showdown.extensions&&window.showdown.extension("xssfilter",e),"undefined"!=typeof module&&(module.exports=e)}();
