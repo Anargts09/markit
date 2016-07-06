@@ -94,7 +94,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function posts(){
-        return $this->hasMany('App\Post')->orderBy('created_at', 'desc');
+        return $this->hasMany('App\Post')->where('status', true)->orderBy('created_at', 'desc');
+    }
+
+    public function tags(){
+        return $this->belongsToMany('App\Tag', 'tag_user_pivot', 'user_id', 'tag_id');
+    }
+
+    public function drafts(){
+        return $this->hasMany('App\Post')->where('status', false)->orderBy('created_at', 'desc');
     }
 
     public function comments(){
@@ -109,7 +117,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function savedposts(){
-        return $this->belongsToMany('App\Post', 'post_saves', 'user_id', 'post_id')->orderBy('created_at', 'desc')->withTimestamps();
+        return $this->belongsToMany('App\Post', 'post_saves', 'user_id', 'post_id')->where('status', true)->orderBy('created_at', 'desc')->withTimestamps();
     }
     public function postSaveCheck($fid){
         $uid=$this->id;

@@ -3,7 +3,8 @@
 	    Site Name - Site Description
 	@endsection
 	@section('navbar')
-			<div class="title-bar sub-title-bar">
+		<div data-sticky-container>
+			<div class="title-bar sub-title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="40" data-sticky-on="small">
 				<div class="row column">
 			        <div class="sub-menu">
 			            <div class="top-bar-right">
@@ -11,7 +12,7 @@
 			            </div>
 			        </div>
 			    </div>
-			</div>
+		    </div>
 		</div>
 	@endsection
 

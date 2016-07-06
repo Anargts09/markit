@@ -11,4 +11,10 @@
       Edit Profile
     </a>
   </li>
+  <li>
+    <a class="{{ $active == 'skill' ? 'is-active' : '' }}" href="{{ route('user.get-editskill') }}">
+      <i class="fa fa-user"></i>
+      User Skills
+    </a>
+  </li>
 </ul>

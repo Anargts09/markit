@@ -37,20 +37,33 @@
 	}
 	li{
 		margin: 0;
-		a{
+		a,
+		button{
 			line-height: 23px;
+			padding: 0.7rem 1rem;
 			&.is-active{
 				color: white;
 			}
 			i{
 				line-height: 23px;
-				font-size: 25px;
+				font-size: 18px;
 			}
 			img{
 				width: 23px;
 				height: auto;
 				border-radius: 3px;
 
+			}
+		}
+		&.is-active{
+			position: relative;
+			&:after{
+				content: "";
+				height: 3px;
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				background: $primary-color;
 			}
 		}
 	}
@@ -69,17 +82,22 @@
 		}
 	}
 	.submenu{
+		border-radius: 4px;
+		padding: 8px 0;
+		top: 110%!important;
+		z-index: 100;
+		hr{
+			margin: 10px 0;
+		}
 		li{
 			a{
+				padding: 7px 25px;
 				line-height: 16px;
-				color: $gray33;
+				color: rgba(black, 0.6);
 				&:hover{
 					background: $grayf5;
 				}
 			}
-		}
-		hr{
-			margin: 0;
 		}
 	}
 }
@@ -92,7 +110,7 @@ SlideUpTopBar for Foundation styles
 */
 
 .slideUp {
-    position: fixed;
+    // position: fixed;
     top: 0;
     transition: top 0.2s ease-in-out;
     width: 100%;

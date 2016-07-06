@@ -69,4 +69,12 @@ function enableTab(id) {
     };
 }
 
+$('#checkbox1').change(function() {
+    if($(this).is(":checked")) {
+    	$('button[type=submit]').html('Post to Public');
+    }else{
+    	$('button[type=submit]').html('Save as draft');
+    }
+});
+
 

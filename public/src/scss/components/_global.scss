@@ -1,9 +1,72 @@
-a:hover, a:active, a:focus {
+*:hover, *:active, *:focus {
 	outline: 0;
 }
 object, embed { 
   outline: 0;
 }
+html{
+	padding-bottom: 60px;
+}
 #mainContent{
-	padding-top: 127px;
+	padding-top: 40px;
+}
+
+.img-circle{
+	border-radius: 50%;
+}
+.padding50{
+	padding-bottom: 70px;
+}
+.loading{
+	display: none;
+}
+.is-loading{
+	.loading{
+		display: block;
+	}
+}
+
+div.tagsinput {
+  border:1px solid #d3d6db;
+  background: #FFF;
+  padding:0 8px;
+  line-height: 36px;
+  font-size: 14px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius: 3px;
+  max-width: 100%;
+  width: 100%;
+  color: #222324;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+div.tagsinput span.tag {
+ display: block;
+ float: left;
+ /*margin: 0 5px 0 3px;*/
+ margin: 5px 5px 5px 0;
+}
+div.tagsinput input { width:auto!important; margin:0px; font-family: helvetica; font-size: 13px; border:1px solid transparent; padding:5px; background: transparent; color: #000; outline:0px;  margin-right:5px; margin-bottom:5px; }
+div.tagsinput div { display:block; float: left; } 
+.tags_clear { clear: both; width: 100%; height: 0px; }
+.ui-menu .ui-state-focus{
+  background: #f0f0f0;
+}
+.ui-menu .ui-menu-item{
+  padding: 3px;
+}
+span[role="status"]{
+  display: none;
+}
+.ui-menu{
+  max-width: 250px;
+  width: auto;
+  list-style: none;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-top: 8px;
+  margin-left: -2px;
 }

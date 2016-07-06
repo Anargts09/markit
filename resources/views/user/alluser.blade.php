@@ -6,16 +6,17 @@
 		<meta name="csrf-token" content="{{ csrf_token() }}" />
 	@endsection
 	@section('navbar')
-		    <div class="title-bar sub-title-bar">
+		<div data-sticky-container>
+			<div class="title-bar sub-title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="40" data-sticky-on="small">
 		    	<div class="row column">
 				    <div class="sub-menu">
 				        <div class="top-bar-left">
 				          	<ul class="menu">
-				            	<li>
-				              		<a class="first-item" href="#">All Post</a>
+				            	<li class="{{ $active == 'alluser' ? 'is-active' : ''}}">
+				              		<a class="first-item" href="{{route('user.listUser')}}">All Users</a>
 				            	</li>
-				            	<li>
-				              		<a href="#">Feed</a>
+				            	<li class="{{ $active == 'alltag' ? 'is-active' : ''}}">
+				              		<a href="{{route('tag.listAll')}}">All Tags</a>
 				            	</li>
 				          	</ul>
 				        </div>
@@ -28,14 +29,19 @@
 		</div>
 	@endsection
 	@section('content')
-	  	<div class="row column">
+		<div class="menu-table">
+        	{!! $users->render() !!}
+    	</div>
+	  	<div class="row small-up-2 medium-up-3 large-up-4">
     		@foreach($users as $listitem)
-				<div class="columns medium-4">
+				<div class="column">
 					@include('user.list')
 				</div>
-			@endforeach	
-        	{!! $users->render() !!}
+			@endforeach
         </div>
+		<div class="menu-table">
+        	{!! $users->render() !!}
+    	</div>
 	@endsection
 	@section('script')
 		 @if(!empty($user))

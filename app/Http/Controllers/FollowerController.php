@@ -63,7 +63,46 @@ class FollowerController extends Controller {
             // Error
             return Response::json(array('success'=>false));
         }
+        return Response::json(array('success'=>false));
     }
+
+
+    /**       
+     * Display a listing of the resource.
+     *
+     * @param  Illuminate\Http\Request $request
+     * @return Response
+    */
+    public function postSave($id, Request $request){
+        if($request->ajax()) {
+            $user = Auth::user();
+            $post = Post::find($id);
+            if ($user && $post) {
+                if(!$user->postSaveCheck($id)){
+                    $user->savedposts()->save($post);
+                    $user->increment('saveitem_count'); 
+                    $post->increment('save_count');
+                    $post->save();
+                    return Response::json(array('success'=>true, 'count'=>$post->save_count, 'type'=>'save'));
+                }else{
+                    $uid=$user->id;
+                    Postsave::where(function($query) use ($uid,$id){
+                        $query  ->where('user_id',$uid)
+                                ->where('post_id', $id);
+                    })->delete();
+                    $user->decrement('saveitem_count');
+                    $post->decrement('save_count');
+                    $post->save();
+                    return Response::json(array('success'=>true, 'count'=>$post->save_count , 'type'=>'unsave'));
+                }
+                return Response::json(array('success'=>false));
+            }
+            return Response::json(array('success'=>false));
+        }
+    }
+
+
+
     public function getFollowers($uid){
         $user=User::find($uid);
         $followers=$user->followers;
@@ -78,6 +117,7 @@ class FollowerController extends Controller {
 
         return View::make('users.followers')->with('user',$user)->with('followers',$followers);
     }
+
     public function getFollowing($uid){
         $user=User::find($uid);
         $following=$user->following;
@@ -127,53 +167,6 @@ class FollowerController extends Controller {
                 })->delete();
                 $tag->decrement('follower_count');
                 $tag->save();
-                return Response::json(array('success'=>true));
-            }
-            return Response::json(array('success'=>false));
-        }
-    }
-
-    /**       
-     * Display a listing of the resource.
-     *
-     * @param  Illuminate\Http\Request $request
-     * @return Response
-    */
-    public function postSave($id, Request $request){
-        if($request->ajax()) {
-            $user = Auth::user();
-            $post = Post::find($id);
-
-            if ($user && $post && !$user->postSaveCheck($id)) {
-                $user->savedposts()->save($post);
-                $user->increment('saveitem_count'); 
-                $post->increment('save_count');
-                $post->save();
-                return Response::json(array('success'=>true));
-            }
-            return Response::json(array('success'=>false));
-        }
-    }
-
-    /**       
-     * Display a listing of the resource.
-     *
-     * @param  Illuminate\Http\Request $request
-     * @return Response
-    */
-    public function postUnsave($id, Request $request){
-        if($request->ajax()) {
-            $user = Auth::user();
-            $post = Post::find($id);
-            if ($user && $post && $user->postSaveCheck($id)) {
-                $uid=$user->id;
-                Postsave::where(function($query) use ($uid,$id){
-                    $query  ->where('user_id',$uid)
-                            ->where('post_id', $id);
-                })->delete();
-                $user->decrement('saveitem_count');
-                $post->decrement('save_count');
-                $post->save();
                 return Response::json(array('success'=>true));
             }
             return Response::json(array('success'=>false));

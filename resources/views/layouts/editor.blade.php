@@ -48,7 +48,7 @@
 
     {!! HTML::script('bower_components/simplemde/dist/simplemde.min.js') !!}
 
-    {!! HTML::script('js/min/script.js') !!}
+    <!-- {!! HTML::script('js/min/script.js') !!} -->
     {!! HTML::script('js/min/editor.js') !!}
 
     {!! HTML::script('js/min/inputtag.js') !!}

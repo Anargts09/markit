@@ -22,13 +22,17 @@ class TagController extends Controller
     public function showTag($slug){   
         $tag = Tag::findBySlug($slug); 
         $posts = $tag->posts;
+        $users = $tag->users;
+        $followers = $tag->followusers;
         if(Auth::user()){
             $user   = Auth::user();
         }
         return view('tag.view')
                 ->with(compact('user'))
                 ->with(compact('tag'))
-                ->with(compact('posts'));
+                ->with(compact('users'))
+                ->with(compact('posts'))
+                ->with(compact('followers'));
     }
     public function showAll(Request $request) {
         $term = strtolower(Input::get('term'));
@@ -46,11 +50,13 @@ class TagController extends Controller
     }
     public function listAll(){
         $tags = Tag::orderBy('post_count', 'desc')->paginate('24');
+        $active ='alltag';
         if(Auth::user()){
             $user = Auth::user(); 
         }
         return view('tag.list')
             ->with('tags',$tags)
+            ->with(compact('active'))
             ->with(compact('user'));
     }
 }

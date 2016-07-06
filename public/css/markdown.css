@@ -5,7 +5,9 @@
 .textarea{
   max-height: 100%;
 }
-.markdown-body {
+.markdown-body,
+.editor-preview-active-side,
+.editor-preview-active {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   color: #333;
@@ -18,85 +20,127 @@
   line-height: 1.4;
   font-size: 14px;
 }
-.markdown-body a {
+.markdown-body a,
+.editor-preview-active-side a,
+.editor-preview-active a {
   background-color: transparent;
 }
 
 .markdown-body a:active,
-.markdown-body a:hover {
+.markdown-body a:hover,
+.editor-preview-active-side a:active,
+.editor-preview-active-side a:hover,
+.editor-preview-active a:active,
+.editor-preview-active a:hover {
   outline: 0;
 }
 
-.markdown-body strong {
+.markdown-body strong,
+.editor-preview-active-side strong,
+.editor-preview-active strong {
   font-weight: bold;
 }
 
-.markdown-body h1 {
+.markdown-body h1,
+.editor-preview-active-side h1,
+.editor-preview-active h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
-.markdown-body img {
+.markdown-body img,
+.editor-preview-active-side img,
+.editor-preview-active img {
   border: 0;
 }
 
-.markdown-body hr {
+.markdown-body hr,
+.editor-preview-active-side hr,
+.editor-preview-active hr {
   box-sizing: content-box;
   height: 0;
 }
-.markdown-body kbd{
+.markdown-body kbd,
+.editor-preview-active-side kbd,
+.editor-preview-active kbd{
   font-family: monospace, monospace;
   font-size: 1em;
 }
 
-.markdown-body input {
+.markdown-body input,
+.editor-preview-active-side input,
+.editor-preview-active input {
   color: inherit;
   font: inherit;
   margin: 0;
 }
 
-.markdown-body html input[disabled] {
+.markdown-body html input[disabled],
+.editor-preview-active-side html input[disabled],
+.editor-preview-active html input[disabled] {
   cursor: default;
 }
 
-.markdown-body input {
+.markdown-body input,
+.editor-preview-active-side input,
+.editor-preview-active input {
   line-height: normal;
 }
 
-.markdown-body input[type="checkbox"] {
+.markdown-body input[type="checkbox"],
+.editor-preview-active-side input[type="checkbox"],
+.editor-preview-active input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
 }
 
-.markdown-body table {
+.markdown-body table,
+.editor-preview-active-side table,
+.editor-preview-active table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
 .markdown-body td,
-.markdown-body th {
+.markdown-body th,
+.editor-preview-active-side td,
+.editor-preview-active-side th,
+.editor-preview-active td,
+.editor-preview-active th {
   padding: 0;
 }
 
-.markdown-body * {
+.markdown-body *,
+.editor-preview-active-side *,
+.editor-preview-active * {
   box-sizing: border-box;
 }
 
-.markdown-body input {
+.markdown-body input,
+.editor-preview-active-side input,
+.editor-preview-active input {
   font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.markdown-body a {
+.markdown-body a,
+.editor-preview-active-side a,
+.editor-preview-active a {
   color: #4078c0;
   text-decoration: none;
 }
 
 .markdown-body a:hover,
-.markdown-body a:active {
+.markdown-body a:active,
+.editor-preview-active-side a:hover,
+.editor-preview-active-side a:active,
+.editor-preview-active a:hover,
+.editor-preview-active a:active{
   text-decoration: underline;
 }
 
-.markdown-body hr {
+.markdown-body hr,
+.editor-preview-active-side hr,
+.editor-preview-active hr {
   height: 0;
   margin: 15px 0;
   overflow: hidden;
@@ -105,12 +149,16 @@
   border-bottom: 1px solid #ddd;
 }
 
-.markdown-body hr:before {
+.markdown-body hr:before,
+.editor-preview-active-side hr:before,
+.editor-preview-active hr:before {
   display: table;
   content: "";
 }
 
-.markdown-body hr:after {
+.markdown-body hr:after,
+.editor-preview-active-side hr:after,
+.editor-preview-active hr:after {
   display: table;
   clear: both;
   content: "";
@@ -121,7 +169,19 @@
 .markdown-body h3,
 .markdown-body h4,
 .markdown-body h5,
-.markdown-body h6 {
+.markdown-body h6,
+.editor-preview-active-side h1,
+.editor-preview-active-side h2,
+.editor-preview-active-side h3,
+.editor-preview-active-side h4,
+.editor-preview-active-side h5,
+.editor-preview-active-side h6,
+.editor-preview-active h1,
+.editor-preview-active h2,
+.editor-preview-active h3,
+.editor-preview-active h4,
+.editor-preview-active h5,
+.editor-preview-active h6 {
   margin-top: 15px!important;
   margin-bottom: 15px!important;
   line-height: 1.1;
@@ -139,65 +199,103 @@
   padding-bottom: 0!important;
 }
 
-.markdown-body h1 {
+.markdown-body h1,
+.editor-preview-active-side h1,
+.editor-preview-active h1 {
   font-size: 30px;
 }
 
-.markdown-body h2 {
+.markdown-body h2,
+.editor-preview-active-side h2,
+.editor-preview-active h2 {
   font-size: 21px;
 }
 
-.markdown-body h3 {
+.markdown-body h3,
+.editor-preview-active-side h3,
+.editor-preview-active h3 {
   font-size: 16px;
 }
 
-.markdown-body h4 {
+.markdown-body h4,
+.editor-preview-active-side h4,
+.editor-preview-active h4 {
   font-size: 14px;
 }
 
-.markdown-body h5 {
+.markdown-body h5,
+.editor-preview-active-side h5,
+.editor-preview-active h5 {
   font-size: 12px;
 }
 
-.markdown-body h6 {
+.markdown-body h6,
+.editor-preview-active-side h6,
+.editor-preview-active h6 {
   font-size: 11px;
 }
 
-.markdown-body blockquote {
+.markdown-body blockquote,
+.editor-preview-active-side blockquote,
+.editor-preview-active blockquote {
   margin: 0;
 }
 
 .markdown-body ul,
-.markdown-body ol {
+.markdown-body ol,
+.editor-preview-active-side ul,
+.editor-preview-active-side ol,
+.editor-preview-active ul,
+.editor-preview-active ol {
   padding: 0;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.markdown-body ul{
+.markdown-body ul,
+.editor-preview-active-side ul,
+.editor-preview-active ul{
   list-style-type: square;
 }
 .markdown-body ol ol,
-.markdown-body ul ol {
+.markdown-body ul ol,
+.editor-preview-active-side ol ol,
+.editor-preview-active-side ul ol,
+.editor-preview-active ol ol,
+.editor-preview-active ul ol {
   list-style-type: lower-roman;
 }
 
 .markdown-body ul ul ol,
 .markdown-body ul ol ol,
 .markdown-body ol ul ol,
-.markdown-body ol ol ol {
+.markdown-body ol ol ol,
+.editor-preview-active-side ul ul ol,
+.editor-preview-active-side ul ol ol,
+.editor-preview-active-side ol ul ol,
+.editor-preview-active-side ol ol ol,
+.editor-preview-active ul ul ol,
+.editor-preview-active ul ol ol,
+.editor-preview-active ol ul ol,
+.editor-preview-active ol ol ol {
   list-style-type: lower-alpha;
 }
 
-.markdown-body dd {
+.markdown-body dd,
+.editor-preview-active-side dd,
+.editor-preview-active dd {
   margin-left: 0;
 }
 
-.markdown-body .select::-ms-expand {
+.markdown-body .select::-ms-expand,
+.editor-preview-active-side .select::-ms-expand,
+.editor-preview-active .select::-ms-expand {
   opacity: 0;
 }
 
-.markdown-body .octicon {
+.markdown-body .octicon,
+.editor-preview-active-side .ocricon,
+.editor-preview-active .ocricon {
   font: normal normal normal 16px/1 octicons-link;
   display: inline-block;
   text-decoration: none;
@@ -210,41 +308,57 @@
   user-select: none;
 }
 
-.markdown-body .octicon-link:before {
+.markdown-body .octicon-link:before,
+.editor-preview-active-side .octicon-link:before,
+.editor-preview-active .octicon-link:before {
   content: '\f05c';
 }
 
-.markdown-body:before {
+.markdown-body:before,
+.editor-preview-active-side:before,
+.editor-preview-active:before {
   display: table;
   content: "";
 }
 
-.markdown-body:after {
+.markdown-body:after,
+.editor-preview-active-side:after,
+.editor-preview-active:after  {
   display: table;
   clear: both;
   content: "";
 }
 
-.markdown-body>*:first-child {
+.markdown-body>*:first-child,
+.editor-preview-active-side>*:first-child,
+.editor-preview-active>*:first-child {
   margin-top: 0 !important;
 }
 
-.markdown-body>*:last-child {
+.markdown-body>*:last-child,
+.editor-preview-active-side>*:last-child,
+.editor-preview-active>*:last-child  {
   margin-bottom: 0 !important;
 }
 
-.markdown-body a:not([href]) {
+.markdown-body a:not([href]),
+.editor-preview-active-side a:not([href]),
+.editor-preview-active a:not([href]) {
   color: inherit;
   text-decoration: none;
 }
 
-.markdown-body .anchor {
+.markdown-body .anchor,
+.editor-preview-active-side .anchor,
+.editor-preview-active .anchor {
   display: inline-block;
   padding-right: 2px;
   margin-left: -18px;
 }
 
-.markdown-body .anchor:focus {
+.markdown-body .anchor:focus,
+.editor-preview-active-side .anchor:focus,
+.editor-preview-active .anchor:focus {
   outline: none;
 }
 
@@ -253,7 +367,19 @@
 .markdown-body h3,
 .markdown-body h4,
 .markdown-body h5,
-.markdown-body h6 {
+.markdown-body h6,
+.editor-preview-active-side h1,
+.editor-preview-active-side h2,
+.editor-preview-active-side h3,
+.editor-preview-active-side h4,
+.editor-preview-active-side h5,
+.editor-preview-active-side h6,
+.editor-preview-active h1,
+.editor-preview-active h2,
+.editor-preview-active h3,
+.editor-preview-active h4,
+.editor-preview-active h5,
+.editor-preview-active h6 {
   margin-top: 1em;
   margin-bottom: 16px;
   font-weight: bold;
@@ -265,7 +391,19 @@
 .markdown-body h3 .octicon-link,
 .markdown-body h4 .octicon-link,
 .markdown-body h5 .octicon-link,
-.markdown-body h6 .octicon-link {
+.markdown-body h6 .octicon-link,
+.editor-preview-active-side h1 .octicon-link,
+.editor-preview-active-side h2 .octicon-link,
+.editor-preview-active-side h3 .octicon-link,
+.editor-preview-active-side h4 .octicon-link,
+.editor-preview-active-side h5 .octicon-link,
+.editor-preview-active-side h6 .octicon-link,
+.editor-preview-active h1 .octicon-link,
+.editor-preview-active h2 .octicon-link,
+.editor-preview-active h3 .octicon-link,
+.editor-preview-active h4 .octicon-link,
+.editor-preview-active h5 .octicon-link,
+.editor-preview-active h6 .octicon-link {
   color: #000;
   vertical-align: middle;
   visibility: hidden;
@@ -276,7 +414,19 @@
 .markdown-body h3:hover .anchor,
 .markdown-body h4:hover .anchor,
 .markdown-body h5:hover .anchor,
-.markdown-body h6:hover .anchor {
+.markdown-body h6:hover .anchor,
+.editor-preview-active-side h1:hover .anchor,
+.editor-preview-active-side h2:hover .anchor,
+.editor-preview-active-side h3:hover .anchor,
+.editor-preview-active-side h4:hover .anchor,
+.editor-preview-active-side h5:hover .anchor,
+.editor-preview-active-side h6:hover .anchor,
+.editor-preview-active h1:hover .anchor,
+.editor-preview-active h2:hover .anchor,
+.editor-preview-active h3:hover .anchor,
+.editor-preview-active h4:hover .anchor,
+.editor-preview-active h5:hover .anchor,
+.editor-preview-active h6:hover .anchor {
   text-decoration: none;
 }
 
@@ -285,63 +435,99 @@
 .markdown-body h3:hover .anchor .octicon-link,
 .markdown-body h4:hover .anchor .octicon-link,
 .markdown-body h5:hover .anchor .octicon-link,
-.markdown-body h6:hover .anchor .octicon-link {
+.markdown-body h6:hover .anchor .octicon-link,
+.editor-preview-active-side h1:hover .anchor .octicon-link,
+.editor-preview-active-side h2:hover .anchor .octicon-link,
+.editor-preview-active-side h3:hover .anchor .octicon-link,
+.editor-preview-active-side h4:hover .anchor .octicon-link,
+.editor-preview-active-side h5:hover .anchor .octicon-link,
+.editor-preview-active-side h6:hover .anchor .octicon-link,
+.editor-preview-active h1:hover .anchor .octicon-link,
+.editor-preview-active h2:hover .anchor .octicon-link,
+.editor-preview-active h3:hover .anchor .octicon-link,
+.editor-preview-active h4:hover .anchor .octicon-link,
+.editor-preview-active h5:hover .anchor .octicon-link,
+.editor-preview-active h6:hover .anchor .octicon-link {
   visibility: visible;
 }
 
-.markdown-body h1 {
+.markdown-body h1,
+.editor-preview-active-side h1,
+.editor-preview-active h1 {
   padding-bottom: 0.3em;
   font-size: 2.25em;
   line-height: 1.2;
   border-bottom: 1px solid #eee;
 }
 
-.markdown-body h1 .anchor {
+.markdown-body h1 .anchor,
+.editor-preview-active-side h1 .anchor,
+.editor-preview-active h1 .anchor {
   line-height: 1;
 }
 
-.markdown-body h2 {
+.markdown-body h2,
+.editor-preview-active-side h2,
+.editor-preview-active h2 {
   padding-bottom: 0.3em;
   font-size: 1.75em;
   line-height: 1.225;
   border-bottom: 1px solid #eee;
 }
 
-.markdown-body h2 .anchor {
+.markdown-body h2 .anchor,
+.editor-preview-active-side h2 .anchor,
+.editor-preview-active h2 .anchor {
   line-height: 1;
 }
 
-.markdown-body h3 {
+.markdown-body h3,
+.editor-preview-active-side h3,
+.editor-preview-active h3 {
   font-size: 1.5em;
   line-height: 1.43;
 }
 
-.markdown-body h3 .anchor {
+.markdown-body h3 .anchor,
+.editor-preview-active-side h3 .anchor,
+.editor-preview-active h3 .anchor {
   line-height: 1.2;
 }
 
-.markdown-body h4 {
+.markdown-body h4,
+.editor-preview-active-side h4,
+.editor-preview-active h4 {
   font-size: 1.25em;
 }
 
-.markdown-body h4 .anchor {
+.markdown-body h4 .anchor,
+.editor-preview-active-side h4 .anchor,
+.editor-preview-active h4 .anchor {
   line-height: 1.2;
 }
 
-.markdown-body h5 {
+.markdown-body h5,
+.editor-preview-active-side h5,
+.editor-preview-active h5 {
   font-size: 1em;
 }
 
-.markdown-body h5 .anchor {
+.markdown-body h5 .anchor,
+.editor-preview-active-side h5 .anchor,
+.editor-preview-active h5 .anchor {
   line-height: 1.1;
 }
 
-.markdown-body h6 {
+.markdown-body h6,
+.editor-preview-active-side h6,
+.editor-preview-active h6 {
   font-size: 1em;
   color: #777;
 }
 
-.markdown-body h6 .anchor {
+.markdown-body h6 .anchor,
+.editor-preview-active-side h6 .anchor,
+.editor-preview-active h6 .anchor {
   line-height: 1.1;
 }
 
@@ -350,12 +536,38 @@
 .markdown-body ul,
 .markdown-body ol,
 .markdown-body dl,
-.markdown-body table{
+.markdown-body table,
+.editor-preview-active-side p,
+.editor-preview-active-side blockquote,
+.editor-preview-active-side ul,
+.editor-preview-active-side ol,
+.editor-preview-active-side dl,
+.editor-preview-active-side table,
+.editor-preview-active p,
+.editor-preview-active blockquote,
+.editor-preview-active ul,
+.editor-preview-active ol,
+.editor-preview-active dl,
+.editor-preview-active table{
   margin-top: 0;
   margin-bottom: 16px;
+  font-size: 20px;
+  line-height: 1.58;
+  letter-spacing: -.003em;
+  color: rgba(0,0,0,0.8);
+}
+.markdown-body.markdown-comment p,
+.markdown-body.markdown-comment blockquote,
+.markdown-body.markdown-comment ul,
+.markdown-body.markdown-comment ol,
+.markdown-body.markdown-comment dl,
+.markdown-body.markdown-comment table{
+  font-size: 18px;
 }
 
-.markdown-body hr {
+.markdown-body hr,
+.editor-preview-active-side hr,
+.editor-preview-active hr {
   height: 4px;
   padding: 0;
   margin: 16px 0;
@@ -364,27 +576,45 @@
 }
 
 .markdown-body ul,
-.markdown-body ol {
+.markdown-body ol,
+.editor-preview-active-side ul,
+.editor-preview-active-side ol,
+.editor-preview-active ul,
+.editor-preview-active ol {
   padding-left: 2em;
 }
 
 .markdown-body ul ul,
 .markdown-body ul ol,
 .markdown-body ol ol,
-.markdown-body ol ul {
+.markdown-body ol ul,
+.editor-preview-active-side ul ul,
+.editor-preview-active-side ul ol,
+.editor-preview-active-side ol ol,
+.editor-preview-active-side ol ul,
+.editor-preview-active ul ul,
+.editor-preview-active ul ol,
+.editor-preview-active ol ol,
+.editor-preview-active ol ul {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.markdown-body li>p {
+.markdown-body li>p,
+.editor-preview-active-side li>p,
+.editor-preview-active li>p {
   margin-top: 16px;
 }
 
-.markdown-body dl {
+.markdown-body dl,
+.editor-preview-active-side dl,
+.editor-preview-active dl {
   padding: 0;
 }
 
-.markdown-body dl dt {
+.markdown-body dl dt,
+.editor-preview-active-side dl dt,
+.editor-preview-active dl dt {
   padding: 0;
   margin-top: 16px;
   font-size: 1em;
@@ -392,26 +622,36 @@
   font-weight: bold;
 }
 
-.markdown-body dl dd {
+.markdown-body dl dd,
+.editor-preview-active-side dl dd,
+.editor-preview-active dl dd {
   padding: 0 16px;
   margin-bottom: 16px;
 }
 
-.markdown-body blockquote {
+.markdown-body blockquote,
+.editor-preview-active-side blockquote,
+.editor-preview-active blockquote {
   padding: 0 15px;
   color: #777;
   border-left: 4px solid #ddd;
 }
 
-.markdown-body blockquote>:first-child {
+.markdown-body blockquote>:first-child,
+.editor-preview-active blockquote>:first-child,
+.editor-preview-active-side blockquote>:first-child {
   margin-top: 0;
 }
 
-.markdown-body blockquote>:last-child {
+.markdown-body blockquote>:last-child,
+.editor-preview-active blockquote>:last-child,
+.editor-preview-active-side blockquote>:last-child {
   margin-bottom: 0;
 }
 
-.markdown-body table {
+.markdown-body table,
+.editor-preview-active-side table,
+.editor-preview-active table {
   display: block;
   width: 100%;
   overflow: auto;
@@ -419,36 +659,52 @@
   word-break: keep-all;
 }
 
-.markdown-body table th {
+.markdown-body table th,
+.editor-preview-active-side table th,
+.editor-preview-active table th {
   font-weight: bold;
 }
 
 .markdown-body table th,
-.markdown-body table td {
+.markdown-body table td,
+.editor-preview-active-side table th,
+.editor-preview-active-side table td,
+.editor-preview-active table th,
+.editor-preview-active table td {
   padding: 6px 13px;
   border: 1px solid #ddd;
 }
 
-.markdown-body table tr {
+.markdown-body table tr,
+.editor-preview-active-side table tr,
+.editor-preview-active table tr {
   background-color: #fff;
   border-top: 1px solid #ccc;
 }
 
-.markdown-body table tr:nth-child(2n) {
+.markdown-body table tr:nth-child(2n),
+.editor-preview-active-side table tr:nth-child(2n),
+.editor-preview-active table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
 
-.markdown-body img {
+.markdown-body img,
+.editor-preview-active-side img,
+.editor-preview-active img {
   max-width: 100%;
   box-sizing: content-box;
   background-color: #fff;
 }
 
-.markdown-body .highlight {
+.markdown-body .highlight,
+.editor-preview-active-side .highlight,
+.editor-preview-active .highlight {
   margin-bottom: 16px;
 }
 
-.markdown-body kbd {
+.markdown-body kbd,
+.editor-preview-active-side kbd,
+.editor-preview-active kbd {
   display: inline-block;
   padding: 3px 5px;
   font-size: 11px;
@@ -462,30 +718,48 @@
   box-shadow: inset 0 -1px 0 #bbb;
 }
 
-.markdown-body .pl-c {
+.markdown-body .pl-c,
+.editor-preview-active-side .pl-c,
+.editor-preview-active .pl-c {
   color: #969896;
 }
 
 .markdown-body .pl-c1,
-.markdown-body .pl-s .pl-v {
+.markdown-body .pl-s .pl-v,
+.editor-preview-active-side .pl-c1,
+.editor-preview-active-side .pl-s .pl-v,
+.editor-preview-active .pl-c1,
+.editor-preview-active .pl-s .pl-v {
   color: #0086b3;
 }
 
 .markdown-body .pl-e,
-.markdown-body .pl-en {
+.markdown-body .pl-en,
+.editor-preview-active-side .pl-e,
+.editor-preview-active-side .pl-en,
+.editor-preview-active .pl-e,
+.editor-preview-active .pl-en {
   color: #795da3;
 }
 
 .markdown-body .pl-s .pl-s1,
-.markdown-body .pl-smi {
+.markdown-body .pl-smi,
+.editor-preview-active-side .pl-s .pl-s1,
+.editor-preview-active-side .pl-smi,
+.editor-preview-active .pl-s .pl-s1,
+.editor-preview-active .pl-smi {
   color: #333;
 }
 
-.markdown-body .pl-ent {
+.markdown-body .pl-ent,
+.editor-preview-active-side .pl-ent,
+.editor-preview-active .pl-ent {
   color: #63a35c;
 }
 
-.markdown-body .pl-k {
+.markdown-body .pl-k,
+.editor-preview-active-side .pl-k,
+.editor-preview-active .pl-k {
   color: #a71d5d;
 }
 
@@ -495,73 +769,119 @@
 .markdown-body .pl-sr,
 .markdown-body .pl-sr .pl-cce,
 .markdown-body .pl-sr .pl-sra,
-.markdown-body .pl-sr .pl-sre {
+.markdown-body .pl-sr .pl-sre,
+.editor-preview-active-side .pl-pds,
+.editor-preview-active-side .pl-s,
+.editor-preview-active-side .pl-s .pl-pse .pl-s1,
+.editor-preview-active-side .pl-sr,
+.editor-preview-active-side .pl-sr .pl-cce,
+.editor-preview-active-side .pl-sr .pl-sra,
+.editor-preview-active-side .pl-sr .pl-sre,
+.editor-preview-active .pl-pds,
+.editor-preview-active .pl-s,
+.editor-preview-active .pl-s .pl-pse .pl-s1,
+.editor-preview-active .pl-sr,
+.editor-preview-active .pl-sr .pl-cce,
+.editor-preview-active .pl-sr .pl-sra,
+.editor-preview-active .pl-sr .pl-sre {
   color: #183691;
 }
 
-.markdown-body .pl-v {
+.markdown-body .pl-v,
+.editor-preview-active-side .pl-v,
+.editor-preview-active .pl-v {
   color: #ed6a43;
 }
 
-.markdown-body .pl-id {
+.markdown-body .pl-id,
+.editor-preview-active-side .pl-id,
+.editor-preview-active .pl-id {
   color: #b52a1d;
 }
 
-.markdown-body .pl-ii {
+.markdown-body .pl-ii,
+.editor-preview-active-side .pl-ii,
+.editor-preview-active .pl-ii {
   background-color: #b52a1d;
   color: #f8f8f8;
 }
 
-.markdown-body .pl-sr .pl-cce {
+.markdown-body .pl-sr .pl-cce,
+.editor-preview-active-side .pl-sr .pl-cce,
+.editor-preview-active .pl-sr .pl-cce {
   color: #63a35c;
   font-weight: bold;
 }
 
-.markdown-body .pl-ml {
+.markdown-body .pl-ml,
+.editor-preview-active-side .pl-ml,
+.editor-preview-active .pl-ml {
   color: #693a17;
 }
 
 .markdown-body .pl-mh,
 .markdown-body .pl-mh .pl-en,
-.markdown-body .pl-ms {
+.markdown-body .pl-ms,
+.editor-preview-active-side .pl-mh,
+.editor-preview-active-side .pl-mh .pl-en,
+.editor-preview-active-side .pl-ms,
+.editor-preview-active .pl-mh,
+.editor-preview-active .pl-mh .pl-en,
+.editor-preview-active .pl-ms {
   color: #1d3e81;
   font-weight: bold;
 }
 
-.markdown-body .pl-mq {
+.markdown-body .pl-mq,
+.editor-preview-active-side .pl-mq,
+.editor-preview-active .pl-mq {
   color: #008080;
 }
 
-.markdown-body .pl-mi {
+.markdown-body .pl-mi,
+.editor-preview-active-side .pl-mi,
+.editor-preview-active .pl-mi {
   color: #333;
   font-style: italic;
 }
 
-.markdown-body .pl-mb {
+.markdown-body .pl-mb,
+.editor-preview-active-side .pl-mb,
+.editor-preview-active .pl-mb {
   color: #333;
   font-weight: bold;
 }
 
-.markdown-body .pl-md {
+.markdown-body .pl-md,
+.editor-preview-active-side .pl-md,
+.editor-preview-active .pl-md {
   background-color: #ffecec;
   color: #bd2c00;
 }
 
-.markdown-body .pl-mi1 {
+.markdown-body .pl-mi1
+.editor-preview-active-side .pl-mi1,
+.editor-preview-active .pl-mi1 {
   background-color: #eaffea;
   color: #55a532;
 }
 
-.markdown-body .pl-mdr {
+.markdown-body .pl-mdr
+.editor-preview-active-side .pl-mdr,
+.editor-preview-active .pl-mdr {
   color: #795da3;
   font-weight: bold;
 }
 
-.markdown-body .pl-mo {
+.markdown-body .pl-mo
+.editor-preview-active-side .pl-mo,
+.editor-preview-active .pl-mo {
   color: #1d3e81;
 }
 
-.markdown-body kbd {
+.markdown-body kbd
+.editor-preview-active-side kbd,
+.editor-preview-active kbd {
   display: inline-block;
   padding: 3px 5px;
   font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
@@ -575,68 +895,37 @@
   box-shadow: inset 0 -1px 0 #bbb;
 }
 
-.markdown-body .task-list-item {
+.markdown-body .task-list-item
+.editor-preview-active-side .task-list-item,
+.editor-preview-active .task-list-item {
   list-style-type: none;
 }
 
-.markdown-body .task-list-item+.task-list-item {
+.markdown-body .task-list-item+.task-list-item
+.editor-preview-active-side .task-list-item+.task-list-item,
+.editor-preview-active .task-list-item+.task-list-item {
   margin-top: 3px;
 }
 
-.markdown-body .task-list-item input {
+.markdown-body .task-list-item input
+.editor-preview-active-side .task-list-item input,
+.editor-preview-active .task-list-item input {
   margin: 0 0.35em 0.25em -1.6em;
   vertical-align: middle;
 }
 
-.markdown-body :checked+.radio-label {
+.markdown-body :checked+.radio-label,
+.editor-preview-active-side :checked+.radio-label,
+.editor-preview-active :checked+.radio-label {
   z-index: 1;
   position: relative;
   border-color: #4078c0;
 }
-#footerPane{
-  padding: 0 0 20px;
-}
-div.tagsinput {
-  border:1px solid #d3d6db;
-  background: #FFF;
-  padding:0 8px;
-  line-height: 36px;
-  font-size: 14px;
-  -moz-border-radius:3px;
-  -webkit-border-radius:3px;
-  border-radius: 3px;
-  max-width: 100%;
-  width: 100%;
-  color: #222324;
-  margin-bottom: 1rem;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-}
-div.tagsinput span.tag {
- display: block;
- float: left;
- /*margin: 0 5px 0 3px;*/
- margin: 5px 5px 5px 0;
-}
-div.tagsinput input { width:auto!important; margin:0px; font-family: helvetica; font-size: 13px; border:1px solid transparent; padding:5px; background: transparent; color: #000; outline:0px;  margin-right:5px; margin-bottom:5px; }
-div.tagsinput div { display:block; float: left; } 
-.tags_clear { clear: both; width: 100%; height: 0px; }
-.ui-menu .ui-state-focus{
-  background: #f0f0f0;
-}
-.ui-menu .ui-menu-item{
-  padding: 3px;
-}
-.ui-menu{
-  max-width: 250px;
-  width: auto;
-  list-style: none;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-top: 8px;
-  margin-left: -2px;
-}
 span[role="status"]{
   display: none;
+}
+.public-checkbox{
+  padding: 5px 0;
+  float: left;
+  line-height: 30px;
 }

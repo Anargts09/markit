@@ -6,42 +6,35 @@ jQuery(document).ready(function() {
         var stringsec =$(this).attr('data-date');
         this.innerHTML = moment(stringsec).fromNow()
     });
+
 });
 
-// ---------------------------------------------------------------
-// SlideUp for Foundation top-bar
-// ---------------------------------------------------------------
+var triggerEnter = function(elem) {
+    var e = jQuery.Event("keypress");
+    e.which = 13; //choose the one you want
+    e.keyCode = 13;
+    elem.trigger(e);
+};
 
-var didScroll;
-var lastScrollTop = 0;
-var scrollAmount = 10;          // Value of scroll amount
-var navbarHeight = $('.slideUp').outerHeight();
+function skillAdd(){
+    $('#tags').tagsInput({
+        'height':'auto',
+        'width':'100%',
+        'interactive':true,
+        'defaultText':'Скилл нэмэх',
+        'delimiter': [','],
+        'removeWithBackspace' : true,
+        'minChars' : 3,
+        'maxChars' : 0,
+        'autocomplete_url':'http://localhost:8000/api/alltag',
+        'autocomplete':{autoFill:true}
+    });
+    var taginput = $('#tags_addTag input')
+    $.each(JsonArray, function() {
+        taginput.val(this.name);
+        triggerEnter(taginput);
+    });
 
-$(window).scroll(function(event){
-    didScroll = true;
-});
-
-setInterval(function() {
-    if (didScroll) {
-        hasScrolled();
-        didScroll = false;
-    }
-}, 250);
-
-function hasScrolled() {
-    var sup = $(this).scrollTop();
-
-    if (sup > lastScrollTop && sup > navbarHeight){
-        // On Scroll Down
-        $('.slideUp').css({top: - 42});
-    } else {
-        // On Scroll Up
-        if(sup + $(window).height() < $(document).height()) {
-            $('.slideUp').css({top: 0});
-        }
-    }
-
-    lastScrollTop = sup;
 }
 
 // Momentjs MN
@@ -70,16 +63,16 @@ moment.locale('mn', {
     relativeTime : {
         future : "%s дараа",
         past : "%s өмнө",
-        s : "секундын",
+        s : "1 секундын",
         m : "1 минутын",
         mm : "%d минутын",
-        h : "цагийн",
+        h : "1 цагийн",
         hh : "%d цагийн",
         d : "1 өдөрийн",
         dd : "%d өдөрийн",
-        M : "сарын",
+        M : "1 сарын",
         MM : "%d сарын",
-        y : "une жилийн",
+        y : "1 жилийн",
         yy : "%d жилийн"
     },
     week : {
@@ -90,14 +83,21 @@ moment.locale('mn', {
 
 // AJAX PAGINATION
 function ajaxPagination(url, obj, appendObject){
+    var loading_content = '<div class="is-loading text-center"><img src="../images/load-indicator.gif"/></div>';
+    $('.'+appendObject).append(loading_content);
     obj = $(obj);
-    obj.addClass('is-loading');
     $.ajax({
       method: "POST",
       url: url,
       dataType: 'json'
     })
     .done(function (data) {
+        if((appendObject == 'feed-content') && (data.count === 0)){
+            var feed_content = '<div>Таны хуудас хоосон байна. Хэрэглэгч болон таг дагаж өөрийн !</div>';
+            $('.is-loading').fadeOut(300).remove();
+            $('.'+appendObject).append(feed_content);
+            return false;
+        }
         var new_list = $(data.html).hide();
         $('.'+appendObject).append(new_list);
         var eDisplayMoments = $('.momentjs', new_list);  
@@ -109,10 +109,10 @@ function ajaxPagination(url, obj, appendObject){
             hljs.highlightBlock(block);
         });
         obj.remove();
+        $('.is-loading').fadeOut(300).remove();
         $(new_list).each(function(index) {
             $(this).delay(30*index).fadeIn(300);
         });
-
     }).fail(function () {
         console.log('error.');
     });
@@ -146,14 +146,27 @@ function enableTab(id) {
 $(document).on('click', 'button.clickFollow', function(e){
     var obj = $(this);
     var follow_id = $(this).attr('data-id');
-    obj.addClass('is-loading');
     jQuery.post("/follow/"+follow_id, function(){}).done(function(data){
-        obj.removeClass('is-loading');
         if (data.success){
-            if(data.type == 'follow'){
+            if(data.type === 'follow'){
                 obj.html('<i class="fa fa-check-square"></i> <span>Дагаж байгаа</span>');
             }else{
                 obj.html('<i class="fa fa-user-plus"></i> <span>Дагах</span>');
+            }
+        }
+    });
+});
+
+// POST SAVE & UNSAVE
+$(document).on('click', 'button.saveButton', function(e){
+    var obj = $(this);
+    var follow_id = $(this).attr('data-id');
+    jQuery.post("/savepost/"+follow_id, function(){}).done(function(data){
+        if (data.success){
+            if(data.type == 'save'){
+                obj.html('<i class="fa fa-bookmark"></i> saved '+data.count+'');
+            }else{
+                obj.html('<i class="fa fa-bookmark-o"></i> save '+data.count+'');
             }
         }
     });
@@ -162,9 +175,7 @@ $(document).on('click', 'button.clickFollow', function(e){
 $(document).on('click', '.tagFollow', function(e){
     var obj = $(this);
     var follow_id = $(this).attr('data-id');
-    obj.addClass('is-loading');
     jQuery.post("/tagfollow/"+follow_id, function(){}).done(function(data){
-        obj.removeClass('is-loading');
         if (data.success){
             obj.removeClass('tagFollow').addClass('tagUnfollow');
             obj.html('<i class="fa fa-check-square"></i>Дагаж байгаа');
@@ -174,37 +185,66 @@ $(document).on('click', '.tagFollow', function(e){
 $(document).on('click', 'button.tagUnfollow', function(e){
     var obj = $(this);
     var follow_id = $(this).attr('data-id');
-    obj.addClass('is-loading');
     jQuery.post("/tagunfollow/"+follow_id, function(){}).done(function(data){
-        obj.removeClass('is-loading');
         if (data.success){
             obj.removeClass('tagUnfollow').addClass('tagFollow');
             obj.html('<i class="fa fa-tags"></i>Дагах');
         }
     });
 });
-// POST SAVE & UNSAVE
-$(document).on('click', '.saveButton', function(e){
-    var obj = $(this);
-    var follow_id = $(this).attr('data-id');
-    obj.addClass('is-loading');
-    jQuery.post("/savepost/"+follow_id, function(){}).done(function(data){
-        obj.removeClass('is-loading');
-        if (data.success){
-            obj.removeClass('saveButton').addClass('is-outlined').addClass('unsaveButton');
-            obj.html('<i class="fa fa-bookmark"></i> Saved');
-        }
-    });
+
+
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
 });
-$(document).on('click', '.unsaveButton', function(e){
+
+$(document).on('submit', '#commentForm', function(e){
+    var submitdata = $('#commentPane').val();
+    if(submitdata != ''){
+        var posturl = $(this).attr('action');
+        $.ajax({
+          method: "POST",
+          url: posturl,
+          dataType: 'json',
+          data: {body: submitdata}
+        })
+        .done(function (data) {
+            var new_comment = $(data.html).hide();
+            $('#postComments').prepend(new_comment);
+            new_comment.fadeIn(300);
+            $('.newComment pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        }).fail(function () {
+            console.log('error.');
+        });
+    };
+    $('#commentPane').val('');
+    return false;
+});
+$(document).on('click', '.pagination-link', function(e){
     var obj = $(this);
-    var follow_id = $(this).attr('data-id');
-    obj.addClass('is-loading');
-    jQuery.post("/unsavepost/"+follow_id, function(){}).done(function(data){
-        obj.removeClass('is-loading');
-        if (data.success){
-            obj.removeClass('unsaveButton').addClass('saveButton');
-            obj.html('<i class="fa fa-bookmark-o"></i> Save');
+    var ajax_url = $(this).attr('data-url');
+    var appendObject = $(this).attr('data-content');
+    ajaxPagination(ajax_url, obj, appendObject);
+});
+$(document).on('focus', '#tags_addTag input',function(){
+    $(this).keypress(function (e) {
+        var keyCode = e.keyCode || e.which; 
+        if ((keyCode === 32)||(keyCode === 9)) {
+            e.preventDefault();
+            triggerEnter($(e.target));
         }
     });
 });

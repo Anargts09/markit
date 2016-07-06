@@ -3,7 +3,8 @@
 	    Site Name - Site Description
 	@endsection
 	@section('navbar')
-		    <div class="title-bar sub-title-bar">
+		<div data-sticky-container>
+			<div class="title-bar sub-title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="40" data-sticky-on="small">
 		    	<div class="row column">
 				    <div class="sub-menu">
 				        <div class="top-bar-left">
@@ -60,41 +61,33 @@
 				</div>
 				<div class="row expanded">
 					<div class="columns small-12">
-						<label>
-							{!! Form::textarea('inputPane', $edit ? $post->body : null, [
-	                        	'class' 		=> 'textarea',
-	                        	'id'			=>  'inputPane',
-	                            'placeholder'   =>  'Markdown оор бичих'
-	                        ]) !!}
-	                    </label>
+						<div class="markdown-body">
+							<label>
+								{!! Form::textarea('inputPane', $edit ? $post->body : null, [
+		                        	'class' 		=> 'textarea',
+		                        	'id'			=>  'inputPane',
+		                            'placeholder'   =>  'Markdown оор бичих'
+		                        ]) !!}
+		                    </label>
+	                    </div>
 					</div>
-					<!-- <div class="columns medium-6">
-						<div class="paneHeader">
-							<div class="control">
-								<span class="select">
-									<select id="paneSetting">
-										<option value="previewPane">Preview</option>
-										<option value="outputPane">HTML Output</option>
-									</select>	
-								</span>
-							</div>
-						</div>
-						<div class="control">
-							{!! Form::textarea('outputPane', null, [
-	                        	'class' 		=> 'pane textarea markdown-body',
-	                        	'id'			=>  'outputPane',
-	                        	'readonly'
-	                        ]) !!}
-						</div>
-						<div id="previewPane" class="pane markdown-body">
-							<div class=""><noscript><h2>You'll need to enable Javascript to use this tool.</h2></noscript></div>
-						</div>
-					</div> -->
 				</div>
-				<div id="footerPane">
-						<p>
-							<button class="button primary" type="submit">Save</button>
-						</p>
+				<div class="row expanded">
+					<div class="columns small-12">
+						<div class="public-checkbox">
+							{!! Form::checkbox('status', 1, $edit ? $post->status : null, ['id' => 'checkbox1']) !!}
+							<label for="checkbox1">Public?</label>
+						</div>
+						@if($edit)
+							@if($post->status)
+								<button class="button primary" type="submit">Post to Public</button>
+							@else 
+								<button class="button primary" type="submit">Save as draft</button>
+							@endif
+						@else
+							<button class="button primary" type="submit">Save as draft</button>
+						@endif
+					</div>
 				</div>
 			{!! Form::close() !!}
 		</div>

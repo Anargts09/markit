@@ -9,34 +9,30 @@
 
     @section('content')
         <div class="row">
-            <div class="login-form">
-                <div class="column medium-3">
-                    <fieldset class="field-form">
-                        @include('include.status')
-                        <div >
+            <div class="columns medium-6 medium-push-3">
+                <fieldset class="field-form">
+                    @include('include.status')
+                    <div >
+                        <h4>Нууц үг дахин авах</h4>
+                        {!! Form::open(['url' => route('auth.password-post')]) !!}
+                            {!! csrf_field() !!}
 
-                            {!! Form::open(['url' => route('auth.password-post')]) !!}
-                                {!! csrf_field() !!}
+                            <div class="control has-icon">
+                                {!! Form::email('email', null,[
+                                    'class'         =>  'input',
+                                    'placeholder'   =>  'Your email, e.g. startup@qiita.mn',
+                                    'required'
+                                ]) !!}
+                            </div>
 
-                                <div class="control has-icon">
-                                    {!! Form::email('email', null,[
-                                        'class'         =>  'input',
-                                        'placeholder'   =>  'Your email, e.g. startup@qiita.mn',
-                                        'required'
-                                    ]) !!}
-                                    <i class="fa fa-envelope"></i>
-                                </div>
+                            <button type="submit" class="button primary">Имэйлээр нууц үг солих линк авах</button>
 
-                                    <button type="submit" class="button is-primary">Имэйлээр нууц үг солих линк авах</button>
-
-                            {!! Form::close() !!}
-                        </div>
-                    </fieldset>
-                </div>
+                        {!! Form::close() !!}
+                    </div>
+                </fieldset>
             </div>
         </div>
     @endsection
 
     @section('script')
-        {!! HTML::script('js/minmain.js') !!}
     @endsection

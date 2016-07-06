@@ -33,6 +33,10 @@ class Tag extends Model implements SluggableInterface
         return $this->belongsToMany('App\Post', 'post_tag_pivot', 'tag_id', 'post_id');
     }
 
+    public function users(){
+        return $this->belongsToMany('App\User', 'tag_user_pivot', 'tag_id', 'user_id');
+    }
+
     public function followusers(){
         return $this->belongsToMany('App\User', 'tagfollowers', 'tag_id', 'user_id')->withTimestamps();
     }

@@ -7,17 +7,27 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 @section('navbar')
-	    <div class="title-bar sub-title-bar">
-	    	<div class="row column">
+	<div data-sticky-container>
+		<div class="title-bar sub-title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="40" data-sticky-on="small">
+			<div class="row column">
 			    <div class="sub-menu">
 			        <div class="top-bar-left">
 			          	<ul class="menu">
-			            	<li>
-			              		<a class="first-item" href="#">All Post</a>
+			            	<li class="{{ $active == 'index' ? 'is-active' : ''}}">
+			              		<a class="first-item" href="{{ route('index') }}">All Post</a>
 			            	</li>
-			            	<li>
-			              		<a href="#">Feed</a>
-			            	</li>
+			            	@if(!empty($user))
+				            	<li class="{{ $active == 'feed' ? 'is-active' : ''}}">
+				              		<a href="{{ route('feed') }}">Feed</a>
+				            	</li>
+			            		<li class="{{ $active == 'saved' ? 'is-active' : ''}}">
+				              		<a href="{{ route('saved') }}">Saved Posts</a>
+				            	</li>
+			            	@else
+			            		<li data-toggle="loginModal">
+				              		<a href="#">Feed</a>
+				            	</li>
+			            	@endif
 			          	</ul>
 			        </div>
 			        <div class="top-bar-right">
@@ -32,7 +42,6 @@
   	<div class="row">
   		<div class="columns medium-9">
 	  		<div class="all-content"></div>
-	  		<div class="feed-content"></div>
   		</div>
   		<div class="columns medium-3"></div>
   	</div>
@@ -47,9 +56,6 @@
 			});
 				jQuery(document).ready(function() {
 					ajaxPagination('{{ url('/postsajax')}}', 'null', 'all-content');
-				});
-				jQuery(document).ready(function() {
-					ajaxPagination('{{ url('/feedajax')}}', 'null', 'feed-content');
 				});
 		</script>
 	@endsection

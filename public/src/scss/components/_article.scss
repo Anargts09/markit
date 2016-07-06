@@ -1,5 +1,6 @@
 .article-box{
 	background: white;
+	padding-bottom: 50px;
 }
 .article-list{
 	padding: 20px;
@@ -13,7 +14,89 @@
 		height: 36px;
 		width: auto;
 	}
+	a.list-author{
+		line-height: 1.4;
+		display: block;
+		color: rgba($primary-color, 0.8);
+		font-size: 15px;
+	}
+	small{
+		font-size: 12px;
+		float: left;
+		color: rgba(black, 0.44);
+	}
+}
+.post-title{
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+	clear: both;
+	display: block;
+	margin: 15px 0 10px;
+	padding-bottom: 5px;
+	color: rgba(black, 0.8);
+	@include clearfix;
+}
+.article-tags{
+	@include clearfix;
+	margin: 15px 0 5px;
+	padding-bottom: 10px;
+}
+.article-title{
+	line-height: 1.12;
+	letter-spacing: -0.022em;
+	color: rgba(black, 0.8);
+	margin: 15px 0;
+}
+.article-body{
+	padding-bottom: 40px;
+}
+.article-author{
+	@include clearfix;
+	img{
+
+		width: 48px;
+		height: 48px;
+	}
 	a{
-		color: $gray33;
+		line-height: 1.4;
+		float: left;
+		display: block;
+		color: rgba($primary-color, 0.8);
+		font-size: 15px;
+	}
+	small{
+		font-size: 12px;
+		float: left;
+		color: rgba(black, 0.44);
+	}
+	button{
+		float: left;
+		padding: 5px 10px;
+		border-radius: 13px;
+		margin: 0 0 0 10px;
+	}
+}
+.list-status{
+	a{
+		margin: 5px 0 5px 5px;
+		line-height: 20px;
+		font-size: 16px;
+	}
+	i{
+		margin: 0 5px 0;
+		font-size: 16px;
+		line-height: 20px;
+	}
+}
+.author-litle{
+	display: block;
+	clear: both;
+	line-height: 30px;
+	color: rgba(black, 0.5);
+	a{
+		line-height: 30px;
+		color: rgba(black, 0.5);
+		float: right;
+		font-size: 80%;
 	}
 }

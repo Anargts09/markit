@@ -1,0 +1,62 @@
+div#add-comment{
+	.CodeMirror{
+		min-height: 150px;
+		height: 150px;
+	}
+}
+#addComment{
+	display: none;
+}
+.comment-header{
+	font-size: 15px;
+	color: rgba(black, 0.7);
+	font-weight: 600;
+	padding: 15px 0;
+	margin-bottom: 0;
+}
+.comment-box{
+	clear: both;
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, .09);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+	background: white;
+	border-radius: 3px;	
+	margin-bottom: 10px;
+	position: relative;
+	&.with-login{
+		color: rgba(black, 0.6);
+		padding: 40px 30px;
+		i{
+			margin-right: 10px;
+		}
+		button{
+			&:hover{
+				color: rgba(black, 0.7);
+			}
+		}
+	}
+	.my-comment{
+		position: absolute;
+		right: 20px;
+		bottom: 20px;
+	}
+}
+.comment-author{
+	margin-bottom: 10px;
+	@include clearfix;
+	img{
+		width: 43px;
+		height: 43px;
+	}
+	a{
+		color: rgba($primary-color, 0.8);
+		font-size: 14px;
+		display: block;
+		line-height: 1.4;
+	}
+	small{
+		color: rgba(black, 0.5);
+		font-size: 12px;
+		line-height: 1.4;
+	}
+}

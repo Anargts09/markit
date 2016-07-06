@@ -171,11 +171,13 @@ class PostController extends Controller
                 -> with('status', 'alert')
                 -> withInput();
         } else {
+
             $user = Auth::user();
             $post = Post::findBySlug($slug);
 
             $post->title              = htmlentities($request->title);
             $post->body            = htmlentities($request->inputPane);
+            $post->status           =$request->status; 
             $post->save();
             if ($post->save()) {
                 foreach( $post->tags as $oldtag){

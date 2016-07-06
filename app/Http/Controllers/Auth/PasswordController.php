@@ -56,7 +56,7 @@ class PasswordController extends Controller
 
         }else{
             return redirect()->route('auth.password')
-                            ->with('status', 'danger')
+                            ->with('status', 'alert')
                             ->with('message', 'Манай системд бүртгэлгүй имэйл хаяг байна.')
                             ->withInput();
         }

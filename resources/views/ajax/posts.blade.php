@@ -2,8 +2,7 @@
 	@include('post.list')
 @endforeach	
 @if($posts->hasMorePages())
-	<br>
-	<a class="pagination-link button is-fullwidth" data-content="all-content" data-url="{{$posts->nextPageUrl()}}">
-		{{trans('home.showmore')}}
+	<a class="pagination-link button hollow small expanded" data-content="all-content" data-url="{{$posts->nextPageUrl()}}">
+		Show more
 	</a>
 @endif

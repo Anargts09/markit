@@ -17,7 +17,9 @@
             <li>
               <a href="{{ route('post.addnew') }}">
                 <i class="fa fa-pencil"></i>
-                Write a article
+                <span class="hide-for-small-only">
+                  Write a article
+                </span>
               </a>
             </li>
             <li>
@@ -32,10 +34,10 @@
               </a>
               <ul class="menu">
                 <li><a href="{{ route('post.addnew') }}">New story</a></li>
-                <li><a href="#">Drafts</a></li>
-                <li><a href="#">Stories</a></li>
+                <li><a href="{{route('user.draftItems')}}">Drafts</a></li>
+                <li><a href="{{route('user.profile', array('slug' =>$user->slug))}}">Stories</a></li>
                 <hr>
-                <li><a href="#">Bookmarks</a></li>
+                <li><a href="{{ route('saved') }}">Saved Posts</a></li>
                 <hr>
                 <li>
                   <a href="{{route('user.profile', array('slug' =>$user->slug))}}">
@@ -63,3 +65,4 @@
       </div>
     </div>
   </div>
+</div>

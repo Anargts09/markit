@@ -28,18 +28,30 @@
 	<![endif]-->
 	
 	    @include('layouts.navbar')
-    	
     	@yield('navbar')
 	    <div id="mainContent">
 	    	@yield('content')
 	    </div>
+	    <div>
+	    	@yield('comment')
+	    </div>
+	    <footer class="main-footer">
+	    	@include('layouts.footer')
+	    </footer>
 	    <!-- Login Modal -->
 	    @if(empty($user))
-		    <div class="tiny reveal" id="loginModal" data-reveal>
+		    <div class="small reveal" id="loginModal" data-reveal>
+		    	<div class="row">
+		    		<div class="columns medium-5">
+			            <p>element</p>
+			        </div>
+		    		<div class="columns medium-7">
+			            @include('include.login')
+			        </div>
+		    	</div>
 			  	<button class="close-button" data-close aria-label="Close reveal" type="button">
 			    	<span aria-hidden="true">&times;</span>
 			  	</button>
-	            @include('include.login')
 			</div>
 		@endif
 
@@ -48,7 +60,8 @@
     {!! HTML::script('bower_components/jquery/dist/jquery.min.js') !!}
     {!! HTML::script('bower_components/foundation-sites/dist/foundation.min.js') !!}
     {!! HTML::script('bower_components/moment/min/moment.min.js') !!}
-    {!! HTML::script('js/min/script.js') !!}
+    <!-- {!! HTML::script('js/min/script.js') !!} -->
+    {!! HTML::script('src/js/script.js') !!}
 	@yield('script')
 </body>
 </html>

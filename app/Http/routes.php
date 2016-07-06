@@ -16,6 +16,14 @@
 
 // Нүүр хуудас
 Route::get('/',            	['as' => 'index',        	'uses'	=> 'HomeController@index']);
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('/feed',            	['as' => 'feed',        	'uses'	=> 'HomeController@getFeed']);
+	Route::get('/saved',            	['as' => 'saved',        	'uses'	=> 'HomeController@getSaved']);
+	// Хэрэглэгчийн ноорог постууд
+	Route::get('/draftitems',['as' => 'user.draftItems',	'uses'	=> 'UserController@showDraftItems']);
+	Route::post('/addskill',['as' => 'user.addskill',	'uses'	=> 'UserController@postAddSkill']);
+});
+
 // Бүх тагуудыг үзэх
 Route::get('/alltag', ['as' => 'tag.listAll', 			'uses'	=> 'TagController@listAll']);
 // Бүх хэрэглэгч үзэх
@@ -26,20 +34,28 @@ Route::get('/post/{slug}', 	['as' => 'post.showbySlug', 'uses'	=> 'PostControlle
 Route::get('/tag/{slug}', 	['as' => 'tag.showbySlug', 	'uses'	=> 'TagController@showTag']);
 // Хэрэглэгчийн Профайл үзэх
 Route::get('/{slug}', 		['as' => 'user.profile',	'uses'	=> 'UserController@showProfile']);
+// Хэрэглэгчийн хадгалсан постууд
+Route::get('/{slug}/saveditems',['as' => 'user.savedItems',	'uses'	=> 'UserController@showSavedItems']);
+// Хэрэглэгчийн бичсэн комментууд
+Route::get('/{slug}/comments',['as' => 'user.commentItems',	'uses'	=> 'UserController@showCommentItems']);
 // Хэрэглэгчийн дагагчид
 Route::get('/{slug}/followers',['as' => 'user.showFollowers',	'uses'	=> 'UserController@showFollowers']);
 // Хэрэглэгчийн дагаж байгаа хүмүүс
 Route::get('/{slug}/followings',['as' => 'user.showFollowing',	'uses'	=> 'UserController@showFollowing']);
+// Хэрэглэгчийн дагаж байгаа хүмүүс
+Route::get('/{slug}/followtags',['as' => 'user.showFollowTags',	'uses'	=> 'UserController@showFollowTags']);
 
 // Зөвхөн Ajax хүсэлтүүд
 Route::group(['middleware' => 'ajax'], function(){
 	// Ajax allpost pagination
 	Route::post('/postsajax',	['as' => 'index.ajaxpost',    'uses'	=> 'AjaxController@getAjaxPost']);
 	// AJAX FIRST 10 Comment
-	Route::post('/post/{slug}/comments',	['as' => 'post.ajaxComment',    'uses'	=> 'AjaxController@getAjaxComments']);
+	Route::post('/post/{slug}/comments',	['as' => 'post.ajaxComment',    'uses'	=> 'CommentController@getAjaxComments']);
 	Route::group(['middleware' => 'auth'], function(){
 		// AjaxFeed pagination
 		Route::post('/feedajax',	['as' => 'index.ajaxfeed',    'uses'	=> 'AjaxController@getAjaxFeed']);
+		// AjaxFeed pagination
+		Route::post('/savedajax',	['as' => 'index.ajaxsaved',    'uses'	=> 'AjaxController@getAjaxSaved']);
 		// Comment AJAX POST
 		Route::post('/post/{slug}/addcomment',	['as' => 'comment.add',    'uses'	=> 'CommentController@addComment']);
 	});
@@ -74,6 +90,7 @@ Route::group(['middleware' => 'auth'], function(){
 	// Профайлаа засах
 	Route::get('/settings/profile', ['as' => $a. 'get-editprofile',	'uses' 	=> 'UserController@getEditProfile']);
 	Route::get('/settings/account', ['as' => $a. 'get-editaccount',	'uses' 	=> 'UserController@getEditAccount']);
+	Route::get('/settings/skill', ['as' => $a. 'get-editskill',	'uses' 	=> 'UserController@getEditSkill']);
 	Route::get('/settings/account/custom_image', ['as' => $a. 'get-imageupload','uses' 	=> 'UserController@getImageUpload']);
 	// Профайлаа засах
 	Route::post('/settings/profile', ['as' => $a. 'post-editprofile','uses' => 'UserController@postEditProfile']);
@@ -90,9 +107,6 @@ Route::group(['middleware' => 'auth'], function(){
     // Пост засах 
     Route::get('/edit/{slug}', ['as' => $p . 'editPost', 		'uses'	=> 'PostController@editPost']);
     Route::post('/edit/{slug}', ['as' => $p . 'postEditPost', 	'uses'	=> 'PostController@postEditPost']);
-    // Пост хадгалах 
-    Route::post('/savepost/{id}',   ['as' =>$p . 'save',		'uses'	=> 'FollowerController@postSave']);
-	Route::post('/unsavepost/{id}', ['as' =>$p . 'unsave',		'uses'	=> 'FollowerController@postUnsave']);
 });
 
 
@@ -100,8 +114,11 @@ Route::group(['middleware' => 'ajax'], function(){
 	// Хэрэглэгч дагах 
 	Route::group(['middleware' => 'auth'], function(){
 	    $f = 'follow.';
+	    $p = 'post.';
 	    // Хүн дагах
 	    Route::post('/follow/{id}',   ['as' =>$f . 'add',		'uses'	=> 'FollowerController@userFollow']);
+	    // Пост хадгалах 
+	    Route::post('/savepost/{id}',   ['as' =>$p . 'save',		'uses'	=> 'FollowerController@postSave']);
 	});
 	// Tag дагах
 	Route::group(['middleware' => 'auth'], function(){
